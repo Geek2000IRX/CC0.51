@@ -21,7 +21,7 @@ public class ChessGameFrame extends JFrame {
         add(statusLabel);
 
         JButton button = new JButton("...");
-        button.addActionListener((e) -> JOptionPane.showMessageDialog(this, "Hello, world!"));
+        button.addActionListener((e) -> JOptionPane.showMessageDialog(this, "啥也没有"));
         button.setLocation(370, 400);
         button.setSize(20, 10);
         add(button);

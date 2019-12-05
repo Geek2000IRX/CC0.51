@@ -1,9 +1,6 @@
 package xyz.chengzi.cs102a.chinesechess.chessboard;
 
-import xyz.chengzi.cs102a.chinesechess.chess.ChessColor;
-import xyz.chengzi.cs102a.chinesechess.chess.ChessComponent;
-import xyz.chengzi.cs102a.chinesechess.chess.EmptySlotComponent;
-import xyz.chengzi.cs102a.chinesechess.chess.ChariotChessComponent;
+import xyz.chengzi.cs102a.chinesechess.chess.*;
 import xyz.chengzi.cs102a.chinesechess.listener.ChessListener;
 import xyz.chengzi.cs102a.chinesechess.listener.ChessboardChessListener;
 
@@ -27,10 +24,23 @@ public class ChessboardComponent extends JComponent {
         }
 
         // FIXME: Initialize chessboard for testing only.
-        initTestBoard(0, 0, ChessColor.BLACK);
-        initTestBoard(0, 8, ChessColor.BLACK);
-        initTestBoard(9, 0, ChessColor.RED);
-        initTestBoard(9, 8, ChessColor.RED);
+        ChariotBoard(0, 0, ChessColor.BLACK);//黑车
+        ChariotBoard(0, 8, ChessColor.BLACK);
+        HorseBoard(0, 1, ChessColor.BLACK);//黑马
+        HorseBoard(0, 7, ChessColor.BLACK);
+        ElephantBoard(0, 2, ChessColor.BLACK);//黑象
+        ElephantBoard(0, 6, ChessColor.BLACK);
+        AdviserBoard(0, 3, ChessColor.BLACK);//黑士
+        AdviserBoard(0, 5, ChessColor.BLACK);
+
+        ChariotBoard(9, 0, ChessColor.RED);//红车
+        ChariotBoard(9, 8, ChessColor.RED);
+        HorseBoard(9, 1, ChessColor.RED);//红马
+        HorseBoard(9, 7, ChessColor.RED);
+        ElephantBoard(9, 2, ChessColor.RED);//红象
+        ElephantBoard(9, 6, ChessColor.RED);
+        AdviserBoard(9, 3, ChessColor.RED);//红士
+        AdviserBoard(9, 5, ChessColor.RED);
     }
 
     public ChessComponent[][] getChessboard() {
@@ -66,8 +76,26 @@ public class ChessboardComponent extends JComponent {
         currentColor = currentColor == ChessColor.BLACK ? ChessColor.RED : ChessColor.BLACK;
     }
 
-    private void initTestBoard(int row, int col, ChessColor color) {
+    private void ChariotBoard(int row, int col, ChessColor color) {
         ChessComponent chessComponent = new ChariotChessComponent(new ChessboardPoint(row, col),
+                calculatePoint(row, col), color);
+        chessComponent.setVisible(true);
+        putChessOnBoard(chessComponent);
+    }
+    private void AdviserBoard(int row, int col, ChessColor color) {
+        ChessComponent chessComponent = new AdviserChessComponent(new ChessboardPoint(row, col),
+                calculatePoint(row, col), color);
+        chessComponent.setVisible(true);
+        putChessOnBoard(chessComponent);
+    }
+    private void ElephantBoard(int row, int col, ChessColor color) {
+        ChessComponent chessComponent = new ElephantChessComponent(new ChessboardPoint(row, col),
+                calculatePoint(row, col), color);
+        chessComponent.setVisible(true);
+        putChessOnBoard(chessComponent);
+    }
+    private void HorseBoard(int row, int col, ChessColor color) {
+        ChessComponent chessComponent = new HorseChessComponent(new ChessboardPoint(row, col),
                 calculatePoint(row, col), color);
         chessComponent.setVisible(true);
         putChessOnBoard(chessComponent);
